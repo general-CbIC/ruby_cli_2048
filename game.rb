@@ -1,6 +1,5 @@
 require './bin/game'
-
-VERSION = '0.0.4'
+require './constants'
 
 def show_menu
   system 'clear'
@@ -8,6 +7,7 @@ def show_menu
   puts '1. Start game'
   puts '2. Help'
   puts '0. Exit'
+  print '>> '
   answer = gets.chomp
   show_menu if answer.to_i > 2 || answer.to_i < 0
   if answer == '1'
@@ -26,8 +26,8 @@ def show_help
   puts 'https://en.wikipedia.org/wiki/2048_(video_game)'
   puts '___________________________'
   puts 'CONTROL:'
-  puts "'w-a-s-d'\tto move blocks (need to press ENTER after it)"
-  puts "'Esc'\t\tto exit"
+  puts "'w a s d'\tto move blocks (need to press ENTER after it)"
+  puts "':q'\t\tto exit"
   puts '___________________________'
   puts '(Press ENTER to exit from help)'
   gets

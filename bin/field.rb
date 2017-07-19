@@ -1,11 +1,13 @@
 class Field
+  require './bin/block'
+
   def initialize(game)
     @game = game
     @field = [
-      [0, 0, 0, 0],
-      [0, 0, 0, 0],
-      [0, 0, 0, 0],
-      [0, 0, 0, 0]
+      [Block.new, Block.new, Block.new, Block.new],
+      [Block.new, Block.new, Block.new, Block.new],
+      [Block.new, Block.new, Block.new, Block.new],
+      [Block.new, Block.new, Block.new, Block.new]
     ]
     init_random
   end

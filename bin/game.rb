@@ -21,22 +21,19 @@ class Game
   private
 
   def update_field
+    system 'clear'
     puts "Score: #{@score}"
     @field.show_field
     wait_for_turn
   end
 
   def wait_for_turn
-    c = gets.chomp
-    case c
-    when 'w', 'W'
-      @field.move_up
-    when 's', 'S'
-      @field.move_down
-    when 'a', 'A'
-      @field.move_left
-    when 'd', 'D'
-      @field.move_right
+    case gets.chomp
+    when 'w', 'W' then @field.move_up
+    when 's', 'S' then @field.move_down
+    when 'a', 'A' then @field.move_left
+    when 'd', 'D' then @field.move_right
+    when ':q' then exit
     end
     update_field
   end
