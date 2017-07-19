@@ -6,6 +6,6 @@ class Game
   end
 
   def start_game
-    puts 'Start game'
+    @field.show_field
   end
 end
