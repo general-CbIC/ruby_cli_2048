@@ -63,7 +63,14 @@ class Field
   end
 
   def move_right
-    puts 'move right'
+    4.times do |row|
+      4.times do |col|
+        col = 3 - col
+        block = @field[row][col]
+        next if block.zero?
+        move_block_right(row, col)
+      end
+    end
   end
 
   private
@@ -137,6 +144,20 @@ class Field
     end
     @field[i][j] = 0
     move_block_left(i, j - 1)
+  end
+
+  def move_block_right(i, j)
+    return if j == 3
+    return if !@field[i][j + 1].zero? && @field[i][j + 1] != @field[i][j]
+    @changed = true
+    if @field[i][j + 1].zero?
+      @field[i][j + 1] = @field[i][j]
+    else
+      @field[i][j + 1] *= 2
+      @game.score += @field[i][j + 1]
+    end
+    @field[i][j] = 0
+    move_block_right(i, j + 1)
   end
 
   def game_over
