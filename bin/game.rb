@@ -28,6 +28,7 @@ class Game
   end
 
   def wait_for_turn
+    @field.changed = false
     case gets.chomp
     when 'w', 'W' then @field.move_up
     when 's', 'S' then @field.move_down
@@ -35,6 +36,7 @@ class Game
     when 'd', 'D' then @field.move_right
     when ':q' then exit
     end
+    @field.add_block if @field.changed
     update_field
   end
 end
